@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { FiMenu, FiX } from 'react-icons/fi'
+import { FaHammer } from 'react-icons/fa'
 
 export default function Sidebar() {
   const pathname = usePathname()
@@ -47,6 +48,15 @@ export default function Sidebar() {
           >
             <span className="mr-3">⚙️</span>
             {isOpen && <span>Ayarlar</span>}
+          </Link>
+          <Link 
+            href="/build" 
+            className={`flex items-center px-4 py-2 rounded transition-colors text-slate-300 ${
+              pathname === '/build' ? 'bg-slate-700' : 'hover:bg-slate-700'
+            }`}
+          >
+            <FaHammer size={20} className="mr-3" />
+            {isOpen && <span>Build</span>}
           </Link>
         </nav>
       </div>
