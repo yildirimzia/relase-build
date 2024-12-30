@@ -1,22 +1,39 @@
 'use client'
+import Image from 'next/image'
 import { FiUser } from 'react-icons/fi'
 
-const Header = () => {
+interface HeaderProps {
+  userName: string;
+  userEmail: string;
+  userImage?: string;
+}
+
+const Header = ({ userName, userEmail, userImage }: HeaderProps) => {
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-sm h-16 flex items-center px-6">
-      <div className="flex-1 flex items-center">
-        <div className="flex flex-col">
-          <h3 className="font-medium text-gray-900 dark:text-white">Ahmet Yılmaz</h3>
-          <span className="text-sm text-gray-500 dark:text-gray-400">ahmet.yilmaz@email.com</span>
+    <header className="w-full bg-[#1E293B] text-white shadow-sm px-6 py-4 border-b border-slate-700">
+      <div className="flex items-center justify-end">
+        <div className="flex items-center">
+          <div className="text-right mr-4">
+            <h2 className="font-medium text-slate-200">{userName}</h2>
+            <p className="text-slate-400 text-sm">{userEmail}</p>
+          </div>
+          <div className="h-10 w-10 rounded-full overflow-hidden bg-slate-700 flex items-center justify-center">
+            {userImage ? (
+              <Image
+                src={userImage}
+                alt={userName}
+                width={40}
+                height={40}
+                className="object-cover"
+              />
+            ) : (
+              <FiUser size={24} className="text-slate-300" />
+            )}
+          </div>
         </div>
-      </div>
-      <div className="flex items-center gap-4">
-        <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-          <FiUser size={20} />
-        </button>
       </div>
     </header>
   )
 }
 
-export default Header 
+export default Header
