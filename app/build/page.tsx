@@ -14,6 +14,7 @@ export default function BuildPage() {
     setIsLoading(true);
     setBuildOutput('');
     
+    
     try {
       const response = await fetch('/api/build', {
         method: 'POST',
